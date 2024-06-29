@@ -103,9 +103,9 @@ export class DockerJsReportServerStack extends Stack {
       accessRole: IAMAppRunner,
     });
 
-    new CfnOutput(this, "apprunner-url", {
-      exportName: "apprunner-url",
-      value: service.serviceUrl,
+    new CfnOutput(this, "app-runner-url", {
+      exportName: "app-runner-url",
+      value: "https://"+service.serviceUrl,
       description: "URL to access service",
     });
   }

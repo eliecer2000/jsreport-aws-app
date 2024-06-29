@@ -39,7 +39,7 @@ This repository provides the necessary resources and deployment scripts to set u
 
    ```sh
    aws configure
-   ## or
+   # or in case of using SSO
    aws configure sso
    ```
 
@@ -48,16 +48,36 @@ This repository provides the necessary resources and deployment scripts to set u
     Use the provided CloudFormation template or deployment scripts to set up the infrastructure on AWS.
 
    ```sh
-   ## I recommend using the flag --require-approval=never
+   # recommend using the flag --require-approval=never
    cdk deploy --all --require-approval=never
 
    ```
 
 
-
 5. **Access JSReport Studio**:
 
     Once the deployment is complete, you can access JSReport Studio through the provided endpoint.
+
+    ```sh
+
+    ...
+    ...
+
+
+    ✅  DockerJsReportServerStack-xxx
+
+    ✨  Deployment time: 1.13s
+
+    Outputs:
+    DockerJsReportServerStack-xxx.apprunnerurl = XXXXXXXXXXX.us-east-1.awsapprunner.com # this is the endpoint
+    Stack ARN:
+    arn:aws:cloudformation:us-east-1:XXXXXXXXXXXX:stack/DockerJsReportServerStack-xxx
+
+    ...
+    ...
+
+
+```
 
 
 ## Usage
