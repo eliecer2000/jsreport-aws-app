@@ -27,13 +27,16 @@ This repository provides the necessary resources and deployment scripts to set u
     ```
 
 
-    Configure your AWS credentials:
+3. **Configure your AWS credentials**:
+
     Make sure your AWS CLI is configured with the necessary permissions to deploy resources.
 
-    Deploy the infrastructure:
+
+4. **Deploy the infrastructure**:
     Use the provided CloudFormation template or deployment scripts to set up the infrastructure on AWS.
 
-    Access JSReport Studio:
+
+5. **Access JSReport Studio**:
     Once the deployment is complete, you can access JSReport Studio through the provided endpoint.
 
 Requirements
