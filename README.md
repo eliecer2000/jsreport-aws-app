@@ -37,10 +37,22 @@ This repository provides the necessary resources and deployment scripts to set u
 
     Make sure your AWS CLI is configured with the necessary permissions to deploy resources.
 
+   ```sh
+   aws configure
+   ## or
+   aws configure sso
+   ```
 
 4. **Deploy the infrastructure**:
 
     Use the provided CloudFormation template or deployment scripts to set up the infrastructure on AWS.
+
+   ```sh
+   ## I recommend using the flag --require-approval=never
+   cdk deploy --all --require-approval=never
+
+   ```
+
 
 
 5. **Access JSReport Studio**:
