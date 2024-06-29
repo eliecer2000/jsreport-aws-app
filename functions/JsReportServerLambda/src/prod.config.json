@@ -1,0 +1,79 @@
+{
+  "httpPort": 5488,
+  "trustUserCode": true,
+  "store": {
+    "provider": "fs"
+  },
+  "blobStorage": {
+    "provider": "aws-s3-storage"
+  },
+  "timeout": 60000,
+  "logger": {
+    "file": {
+      "silent": true
+    },
+    "error": {
+      "silent": true
+    }
+  },
+  "extensions": {
+    "fs-store": {
+      "persistence": {
+        "provider": "aws-s3"
+      }
+    },
+    "fs-store-aws-s3-persistence": {
+      "lock": {
+        "queueName": "jsreport-lock.fifo",
+        "region": "us-east-1",
+        "enabled": true,
+        "attributes": {}
+      },
+      "s3Options": {
+        "maxRetries": 10
+      }
+    },
+    "aws-s3-storage": {
+      "s3Options": {}
+    },
+    "licensing": {
+      "useSavedLicenseInfo": false
+    },
+    "authentication": {
+      "enabled": false
+    },
+    "authorization": {
+      "enabled": false
+    },
+    "cli": {
+      "enabled": false
+    },
+    "express": {
+      "enabled": false
+    },
+    "freeze": {
+      "enabled": false
+    },
+    "import-export": {
+      "enabled": false
+    },
+    "public-templates": {
+      "enabled": false
+    },
+    "sample-template": {
+      "enabled": false
+    },
+    "studio": {
+      "enabled": false
+    },
+    "studio-theme-dark": {
+      "enabled": false
+    },
+    "tags": {
+      "enabled": false
+    },
+    "version-control": {
+      "enabled": false
+    }
+  }
+}

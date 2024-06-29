@@ -1,8 +1,8 @@
 {
-  "name": "orbis-js-report-server",
+  "name": "js-report-server",
   "version": "0.1.0",
   "bin": {
-    "orbis-js-report-server": "bin/orbis-js-report-server.js"
+    "js-report-server": "bin/js-report-server.js"
   },
   "scripts": {
     "build": "tsc",
@@ -10,18 +10,43 @@
     "test": "jest",
     "cdk": "cdk"
   },
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 80,
+    "bracketSpacing": true
+  },
   "devDependencies": {
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
+    "@commitlint/cz-commitlint": "^19.0.3",
     "@types/jest": "^29.5.12",
     "@types/node": "20.12.7",
+    "@typescript-eslint/parser": "^7.1.1",
+    "esbuild": "^0.20.1",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.0",
+    "eslint-webpack-plugin": "^4.0.1",
+    "glob": "^10.3.10",
     "jest": "^29.7.0",
+    "prettier": "^3.2.5",
+    "standard-version": "^9.5.0",
     "ts-jest": "^29.1.2",
-    "aws-cdk": "2.140.0",
     "ts-node": "^10.9.2",
     "typescript": "~5.4.5"
   },
   "dependencies": {
-    "aws-cdk-lib": "2.140.0",
-    "constructs": "^10.0.0",
+    "@aws-cdk/aws-apprunner-alpha": "^2.147.2-alpha.0",
+    "aws-cdk-lib": "^2.147.2",
+    "cdk-ecr-deployment": "^3.0.71",
+    "constructs": "^10.3.0",
+    "dotenv": "^16.4.5",
     "source-map-support": "^0.5.21"
   }
 }

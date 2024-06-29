@@ -1,0 +1,12 @@
+templates:
+  - "cdk.out/*.template.json"
+include_checks:
+  - I
+ignore_checks:
+  - W3005
+  - I1022
+  - I6010
+  - W2001
+  - E3002
+  - I1002
+  - I3010

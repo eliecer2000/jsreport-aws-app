@@ -1,0 +1,16 @@
+{
+  "name": "jsreport-server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "jsreport": "jsreport"
+  },
+  "jsreport": {
+    "entryPoint": "server.js"
+  },
+  "dependencies": {
+    "@jsreport/jsreport-fs-store-aws-s3-persistence": "^4.0.2",
+    "jsreport": "^4.5.0",
+    "moment": "^2.30.1"
+  }
+}

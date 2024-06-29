@@ -1,14 +1,102 @@
-# Welcome to your CDK TypeScript project
+# JSReport on AWS (WIP)
 
-This is a blank project for CDK development with TypeScript.
+This repository provides the necessary resources and deployment scripts to set up JSReport Studio and report generation capabilities using AWS Lambda. The project aims to simplify the deployment process, ensuring that you can quickly get up and running with JSReport on AWS.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Features
 
-## Useful commands
+- Automated deployment of JSReport Studio on AWS
+- Serverless report generation using AWS Lambda
+- Integration with AWS services such as S3, API Gateway, and CloudFormation
+- Scalable and cost-efficient architecture
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+## Requirements
+
+- AWS account with necessary permissions
+- AWS CLI configured
+- Node.js and npm installed locally
+
+## Getting Started
+
+1. **Clone the repository**:
+   ```sh
+
+   git clone https://github.com/your-username/jsreport-aws-deployment.git
+   ```
+
+2. **Navigate to the project directory**:
+
+    ```sh
+
+    cd jsreport-aws-deployment
+    npm install
+
+    ```
+
+
+3. **Configure your AWS credentials**:
+
+    Make sure your AWS CLI is configured with the necessary permissions to deploy resources.
+
+   ```sh
+   aws configure
+   # or in case of using SSO
+   aws configure sso
+   ```
+
+4. **Deploy the infrastructure**:
+
+    Use the provided CloudFormation template or deployment scripts to set up the infrastructure on AWS.
+
+   ```sh
+   # recommend using the flag --require-approval=never
+   cdk deploy --all --require-approval=never
+
+   ```
+
+
+5. **Access JSReport Studio**:
+
+    Once the deployment is complete, you can access JSReport Studio through the provided endpoint.
+
+    ```sh
+
+    ...
+    ...
+
+
+    ✅  DockerJsReportServerStack-xxx
+
+    ✨  Deployment time: 1.13s
+
+    Outputs:
+    DockerJsReportServerStack-xxx.app-runner-url = https://XXXXXXXXXXX.us-east-1.awsapprunner.com # this is the endpoint
+    Stack ARN:
+    arn:aws:cloudformation:us-xxxx-x:XXXXXXXXXXXX:stack/DockerJsReportServerStack-xxx
+
+    ...
+    ...
+
+
+    ```
+
+
+## Usage
+JSReport Studio
+
+Access the JSReport Studio through the deployed endpoint to create and manage your reports.
+
+
+## Report Generation
+
+Invoke the AWS Lambda function with the required parameters to generate reports dynamically.
+Contributing
+
+
+
+## Contributions are welcome!
+
+Please fork this repository and submit pull requests with your improvements.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

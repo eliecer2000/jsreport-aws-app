@@ -1,0 +1,20 @@
+{
+    "name": "executions-main",
+    "engine": "handlebars",
+    "recipe": "chrome-pdf",
+    "data": {
+        "shortid": "7mfRuFLc3"
+    },
+    "shortid": "BpptYIhT1w",
+    "chrome": {
+        "printBackground": true
+    },
+    "creationDate": {
+        "$$date": 1719328598378
+    },
+    "modificationDate": {
+        "$$date": 1719328598378
+    },
+    "_id": "g73v4sN4uZ67xQFb",
+    "$entitySet": "templates"
+}
