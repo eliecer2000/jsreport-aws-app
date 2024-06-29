@@ -69,15 +69,15 @@ This repository provides the necessary resources and deployment scripts to set u
     ✨  Deployment time: 1.13s
 
     Outputs:
-    DockerJsReportServerStack-xxx.apprunnerurl = XXXXXXXXXXX.us-east-1.awsapprunner.com # this is the endpoint
+    DockerJsReportServerStack-xxx.app-runner-url = https://XXXXXXXXXXX.us-east-1.awsapprunner.com # this is the endpoint
     Stack ARN:
-    arn:aws:cloudformation:us-east-1:XXXXXXXXXXXX:stack/DockerJsReportServerStack-xxx
+    arn:aws:cloudformation:us-xxxx-x:XXXXXXXXXXXX:stack/DockerJsReportServerStack-xxx
 
     ...
     ...
 
 
-```
+    ```
 
 
 ## Usage
