@@ -1,0 +1,26 @@
+{
+  "name": "js-report-server-lambda",
+  "version": "1.0.0",
+  "description": "JsReport Server Lambda",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node createLambdaLayer.js"
+  },
+  "dependencies": {
+    "@jsreport/jsreport-aws-s3-storage": "^4.0.1",
+    "@jsreport/jsreport-fs-store-aws-s3-persistence": "^4.0.2",
+    "@sparticuz/chromium": "123.0.1",
+    "aws-sdk": "^2.1648.0",
+    "fs-extra": "11.2.0",
+    "jsreport": "4.5.0",
+    "lambda-log": "^2.4.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "p-limit": "5.0.0",
+    "rimraf": "5.0.7"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT-0"
+}
