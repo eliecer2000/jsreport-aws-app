@@ -12,6 +12,7 @@ This repository provides the necessary resources and deployment scripts to set u
 ## Getting Started
 
 1. **Clone the repository**:
+   ```sh
 
    git clone https://github.com/your-username/jsreport-aws-deployment.git
 
