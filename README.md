@@ -1,14 +1,141 @@
-# Welcome to your CDK TypeScript project
+# JSReport on AWS (WIP)
 
-This is a blank project for CDK development with TypeScript.
+This repository provides the necessary resources and deployment scripts to set up JSReport Studio and report generation capabilities using AWS Lambda. The project aims to simplify the deployment process, ensuring that you can quickly get up and running with JSReport on AWS.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+This project is inspired by the jsreport documentation, where it is specified how to work with lambdas functions and/or EC2 instances.
 
-## Useful commands
+After some searching I could not find a project that combined the functionality that exists for AWS, persistence of the template in S3, persistence of the output report in S3, and of course a lambda for the requesting of reports, in this project apart from this also integrated the possibility of having a container is JSReport Studio already configured to create or modify new templates.
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+**Referencias**
+
+- [JSReport documentation](https://jsreport.net/learn)
+
+- [Template stores](https://jsreport.net/learn/template-stores)
+
+- [Blob storage](https://jsreport.net/learn/blob-storages)
+
+- [Reports extension](https://jsreport.net/learn/reports)
+
+## Features
+
+- Automated deployment of JSReport Studio on AWS
+- Serverless report generation using AWS Lambda
+- Integration with AWS services such as S3, Lambda, App Rummer, and CloudFormation
+- Scalable and cost-efficient architecture
+
+## Requirements
+
+- AWS account with necessary permissions
+- AWS CLI configured
+- Node.js and npm installed locally
+
+## Getting Started
+
+1. **Clone the repository**:
+
+```sh
+
+git clone https://github.com/eliecer2000/jsreport-aws-app.git
+```
+
+2. **Navigate to the project directory**:
+
+```sh
+
+cd jsreport-aws-app
+npm install
+
+```
+
+3. **Configure your AWS credentials**:
+
+Make sure your AWS CLI is configured with the necessary permissions to deploy resources.
+
+```sh
+aws configure
+# or in case of using SSO
+aws configure sso
+```
+
+4. **Environmental Variables**:
+
+You must create from the sample .env.local file a file containing your project data.
+
+```sh
+ENV_REGION_ID=us-east-1
+# this will be the aws account number where the project is going to be deployed
+ENV_ACCOUNT_ID=000000000000
+
+
+# this will be the folder where the report tempates will be stored
+FS_STORE_AWS_S3_PERSISTENCE_PREFIX=testReports
+
+
+FS_AUTHENTICATION_ADMIN_USERNAME=admin
+FS_AUTHENTICATION_ADMIN_PASSWORD=password
+
+```
+
+5. **Deploy the infrastructure**:
+
+Use the provided CloudFormation template or deployment scripts to set up the infrastructure on AWS.
+
+```sh
+# recommend using the flag --require-approval=never
+cdk deploy --all --require-approval=never
+
+```
+
+6. **Access JSReport Studio**:
+
+Once the deployment is complete, you can access JSReport Studio through the provided endpoint.
+
+```sh
+
+...
+...
+
+
+✅  DockerJsReportServerStack-xxx
+
+✨  Deployment time: 1.13s
+
+Outputs:
+DockerJsReportServerStack-xxx.app-runner-url = https://XXXXXXXXXXX.us-east-1.awsapprunner.com # this is the endpoint
+Stack ARN:
+arn:aws:cloudformation:us-xxxx-x:XXXXXXXXXXXX:stack/DockerJsReportServerStack-xxx
+
+...
+...
+
+
+```
+
+## Usage
+
+JSReport Studio
+
+Access the JSReport Studio through the deployed endpoint to create and manage your reports.
+
+## Report Generation
+
+Invoke the AWS Lambda function with the required parameters to generate reports dynamically.
+
+To invoke the lambda function you can use the contents of the `event.json` file
+
+## Future Features
+
+- User Management: Integration with AWS Cognito for user authentication and management.
+- Template permanence: Integrate DynamoDB for template data persistence.
+- AutoScaling Configuration: Change App Runner AutoScaling configuration to optimize service costs.
+- App Runner Timeout: Implement auto pause of App Runner service to optimize costs while the infrastructure is not in use.
+- Report download: provide as optional the download link to the file saved in the s3 bucket.
+- Enhanced Security: Implementation of advanced security features and best practices (cfn_nag).
+
+## Contributions are welcome!
+
+Please fork this repository and submit pull requests with your improvements.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
