@@ -1,4 +1,4 @@
-# JSReport on AWS
+# JSReport on AWS (WIP)
 
 This repository provides the necessary resources and deployment scripts to set up JSReport Studio and report generation capabilities using AWS Lambda. The project aims to simplify the deployment process, ensuring that you can quickly get up and running with JSReport on AWS.
 
@@ -8,6 +8,12 @@ This repository provides the necessary resources and deployment scripts to set u
 - Serverless report generation using AWS Lambda
 - Integration with AWS services such as S3, API Gateway, and CloudFormation
 - Scalable and cost-efficient architecture
+
+## Requirements
+
+- AWS account with necessary permissions
+- AWS CLI configured
+- Node.js and npm installed locally
 
 ## Getting Started
 
@@ -28,7 +34,6 @@ This repository provides the necessary resources and deployment scripts to set u
 
 
 3. **Configure your AWS credentials**:
-
     Make sure your AWS CLI is configured with the necessary permissions to deploy resources.
 
 
@@ -39,11 +44,6 @@ This repository provides the necessary resources and deployment scripts to set u
 5. **Access JSReport Studio**:
     Once the deployment is complete, you can access JSReport Studio through the provided endpoint.
 
-Requirements
-
-    AWS account with necessary permissions
-    AWS CLI configured
-    Node.js and npm installed locally
 
 Usage
 JSReport Studio
