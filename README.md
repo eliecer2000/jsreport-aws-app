@@ -18,9 +18,12 @@ This repository provides the necessary resources and deployment scripts to set u
 
 2. **Navigate to the project directory**:
 
-    sh
+    ```sh
 
     cd jsreport-aws-deployment
+    npm install
+
+
 
     Configure your AWS credentials:
     Make sure your AWS CLI is configured with the necessary permissions to deploy resources.
