@@ -15,6 +15,7 @@ This repository provides the necessary resources and deployment scripts to set u
    ```sh
 
    git clone https://github.com/your-username/jsreport-aws-deployment.git
+   ```
 
 2. **Navigate to the project directory**:
 
@@ -23,6 +24,7 @@ This repository provides the necessary resources and deployment scripts to set u
     cd jsreport-aws-deployment
     npm install
 
+    ```
 
 
     Configure your AWS credentials:
