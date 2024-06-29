@@ -1,7 +1,5 @@
 # JSReport on AWS (WIP)
 
-[![build status](https://github.com/jsreport/jsreport/actions/workflows/main.yml/badge.svg)](https://github.com/jsreport/jsreport/actions)
-
 This repository provides the necessary resources and deployment scripts to set up JSReport Studio and report generation capabilities using AWS Lambda. The project aims to simplify the deployment process, ensuring that you can quickly get up and running with JSReport on AWS.
 
 ## Features
