@@ -45,16 +45,23 @@ This repository provides the necessary resources and deployment scripts to set u
     Once the deployment is complete, you can access JSReport Studio through the provided endpoint.
 
 
-Usage
+## Usage
 JSReport Studio
 
 Access the JSReport Studio through the deployed endpoint to create and manage your reports.
-Report Generation
+
+
+## Report Generation
 
 Invoke the AWS Lambda function with the required parameters to generate reports dynamically.
 Contributing
 
-Contributions are welcome! Please fork this repository and submit pull requests with your improvements.
-License
+
+
+## Contributions are welcome!
+
+Please fork this repository and submit pull requests with your improvements.
+
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.

@@ -37,7 +37,7 @@ export class DockerJsReportServerStack extends Stack {
 
     const asset = new DockerImageAsset(this, "DockerJsReportServerImage", {
       assetName: `js-report-server-image-${CURRENT_ENVIRONMENT}`,
-      directory: path.join(__dirname, "../", "ImageServer"),
+      directory: path.join(__dirname, "../", "functions", "ImageServer"),
       invalidation: {
         buildArgs: false,
       },
