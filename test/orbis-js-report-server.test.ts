@@ -1,1 +1,1 @@
-test("SQS Queue Created", () => {});
+test('SQS Queue Created', () => {})
