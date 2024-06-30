@@ -19,19 +19,19 @@ This repository provides the necessary resources and deployment scripts to set u
 
 1. **Clone the repository**:
 
-   ```sh
+```sh
 
-   git clone https://github.com/eliecer2000/jsreport-aws-app.git
-   ```
+git clone https://github.com/eliecer2000/jsreport-aws-app.git
+```
 
 2. **Navigate to the project directory**:
 
-   ```sh
+```sh
 
-   cd jsreport-aws-app
-   npm install
+cd jsreport-aws-app
+npm install
 
-   ```
+```
 
 3. **Configure your AWS credentials**:
 
@@ -64,38 +64,38 @@ FS_AUTHENTICATION_ADMIN_PASSWORD=password
 
 5. **Deploy the infrastructure**:
 
-   Use the provided CloudFormation template or deployment scripts to set up the infrastructure on AWS.
+Use the provided CloudFormation template or deployment scripts to set up the infrastructure on AWS.
 
-   ```sh
-   # recommend using the flag --require-approval=never
-   cdk deploy --all --require-approval=never
+```sh
+# recommend using the flag --require-approval=never
+cdk deploy --all --require-approval=never
 
-   ```
+```
 
 6. **Access JSReport Studio**:
 
-   Once the deployment is complete, you can access JSReport Studio through the provided endpoint.
+Once the deployment is complete, you can access JSReport Studio through the provided endpoint.
 
-   ```sh
+```sh
 
-   ...
-   ...
-
-
-   ✅  DockerJsReportServerStack-xxx
-
-   ✨  Deployment time: 1.13s
-
-   Outputs:
-   DockerJsReportServerStack-xxx.app-runner-url = https://XXXXXXXXXXX.us-east-1.awsapprunner.com # this is the endpoint
-   Stack ARN:
-   arn:aws:cloudformation:us-xxxx-x:XXXXXXXXXXXX:stack/DockerJsReportServerStack-xxx
-
-   ...
-   ...
+...
+...
 
 
-   ```
+✅  DockerJsReportServerStack-xxx
+
+✨  Deployment time: 1.13s
+
+Outputs:
+DockerJsReportServerStack-xxx.app-runner-url = https://XXXXXXXXXXX.us-east-1.awsapprunner.com # this is the endpoint
+Stack ARN:
+arn:aws:cloudformation:us-xxxx-x:XXXXXXXXXXXX:stack/DockerJsReportServerStack-xxx
+
+...
+...
+
+
+```
 
 ## Usage
 
