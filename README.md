@@ -121,6 +121,8 @@ Access the JSReport Studio through the deployed endpoint to create and manage yo
 
 Invoke the AWS Lambda function with the required parameters to generate reports dynamically.
 
+To invoke the lambda function you can use the contents of the `event.json` file
+
 ## Contributions are welcome!
 
 Please fork this repository and submit pull requests with your improvements.
