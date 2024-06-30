@@ -18,34 +18,53 @@ This repository provides the necessary resources and deployment scripts to set u
 ## Getting Started
 
 1. **Clone the repository**:
+
    ```sh
 
-   git clone https://github.com/your-username/jsreport-aws-deployment.git
+   git clone https://github.com/eliecer2000/jsreport-aws-app.git
    ```
 
 2. **Navigate to the project directory**:
 
-    ```sh
+   ```sh
 
-    cd jsreport-aws-deployment
-    npm install
+   cd jsreport-aws-app
+   npm install
 
-    ```
-
+   ```
 
 3. **Configure your AWS credentials**:
 
-    Make sure your AWS CLI is configured with the necessary permissions to deploy resources.
+Make sure your AWS CLI is configured with the necessary permissions to deploy resources.
 
-   ```sh
-   aws configure
-   # or in case of using SSO
-   aws configure sso
-   ```
+```sh
+aws configure
+# or in case of using SSO
+aws configure sso
+```
 
-4. **Deploy the infrastructure**:
+4. **Environmental Variables**:
 
-    Use the provided CloudFormation template or deployment scripts to set up the infrastructure on AWS.
+You must create from the sample .env.local file a file containing your project data.
+
+```sh
+ENV_REGION_ID=us-east-1
+# this will be the aws account number where the project is going to be deployed
+ENV_ACCOUNT_ID=000000000000
+
+
+# this will be the folder where the report tempates will be stored
+FS_STORE_AWS_S3_PERSISTENCE_PREFIX=testReports
+
+
+FS_AUTHENTICATION_ADMIN_USERNAME=admin
+FS_AUTHENTICATION_ADMIN_PASSWORD=password
+
+```
+
+5. **Deploy the infrastructure**:
+
+   Use the provided CloudFormation template or deployment scripts to set up the infrastructure on AWS.
 
    ```sh
    # recommend using the flag --require-approval=never
@@ -53,45 +72,40 @@ This repository provides the necessary resources and deployment scripts to set u
 
    ```
 
+6. **Access JSReport Studio**:
 
-5. **Access JSReport Studio**:
+   Once the deployment is complete, you can access JSReport Studio through the provided endpoint.
 
-    Once the deployment is complete, you can access JSReport Studio through the provided endpoint.
+   ```sh
 
-    ```sh
-
-    ...
-    ...
-
-
-    ✅  DockerJsReportServerStack-xxx
-
-    ✨  Deployment time: 1.13s
-
-    Outputs:
-    DockerJsReportServerStack-xxx.app-runner-url = https://XXXXXXXXXXX.us-east-1.awsapprunner.com # this is the endpoint
-    Stack ARN:
-    arn:aws:cloudformation:us-xxxx-x:XXXXXXXXXXXX:stack/DockerJsReportServerStack-xxx
-
-    ...
-    ...
+   ...
+   ...
 
 
-    ```
+   ✅  DockerJsReportServerStack-xxx
 
+   ✨  Deployment time: 1.13s
+
+   Outputs:
+   DockerJsReportServerStack-xxx.app-runner-url = https://XXXXXXXXXXX.us-east-1.awsapprunner.com # this is the endpoint
+   Stack ARN:
+   arn:aws:cloudformation:us-xxxx-x:XXXXXXXXXXXX:stack/DockerJsReportServerStack-xxx
+
+   ...
+   ...
+
+
+   ```
 
 ## Usage
+
 JSReport Studio
 
 Access the JSReport Studio through the deployed endpoint to create and manage your reports.
 
-
 ## Report Generation
 
 Invoke the AWS Lambda function with the required parameters to generate reports dynamically.
-Contributing
-
-
 
 ## Contributions are welcome!
 
