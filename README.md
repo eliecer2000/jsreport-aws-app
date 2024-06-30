@@ -8,10 +8,13 @@ After some searching I could not find a project that combined the functionality 
 
 **Referencias**
 
-[JSReport documentation](https://jsreport.net/learn)
-[Template stores](https://jsreport.net/learn/template-stores)
-[Blob storage](https://jsreport.net/learn/blob-storages)
-[Reports extension](https://jsreport.net/learn/reports)
+- [JSReport documentation](https://jsreport.net/learn)
+
+- [Template stores](https://jsreport.net/learn/template-stores)
+
+- [Blob storage](https://jsreport.net/learn/blob-storages)
+
+- [Reports extension](https://jsreport.net/learn/reports)
 
 ## Features
 
