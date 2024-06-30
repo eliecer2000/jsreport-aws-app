@@ -2,11 +2,22 @@
 
 This repository provides the necessary resources and deployment scripts to set up JSReport Studio and report generation capabilities using AWS Lambda. The project aims to simplify the deployment process, ensuring that you can quickly get up and running with JSReport on AWS.
 
+This project is inspired by the jsreport documentation, where it is specified how to work with lambdas functions and/or EC2 instances.
+
+After some searching I could not find a project that combined the functionality that exists for AWS, persistence of the template in S3, persistence of the output report in S3, and of course a lambda for the requesting of reports, in this project apart from this also integrated the possibility of having a container is JSReport Studio already configured to create or modify new templates.
+
+**Referencias**
+
+[JSReport documentation](https://jsreport.net/learn)
+[Template stores](https://jsreport.net/learn/template-stores)
+[Blob storage](https://jsreport.net/learn/blob-storages)
+[Reports extension](https://jsreport.net/learn/reports)
+
 ## Features
 
 - Automated deployment of JSReport Studio on AWS
 - Serverless report generation using AWS Lambda
-- Integration with AWS services such as S3, API Gateway, and CloudFormation
+- Integration with AWS services such as S3, Lambda, App Rummer, and CloudFormation
 - Scalable and cost-efficient architecture
 
 ## Requirements
