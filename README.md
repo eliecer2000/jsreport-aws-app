@@ -123,6 +123,15 @@ Invoke the AWS Lambda function with the required parameters to generate reports 
 
 To invoke the lambda function you can use the contents of the `event.json` file
 
+## Future Features
+
+- User Management: Integration with AWS Cognito for user authentication and management.
+- Template permanence: Integrate DynamoDB for template data persistence.
+- AutoScaling Configuration: Change App Runner AutoScaling configuration to optimize service costs.
+- App Runner Timeout: Implement auto pause of App Runner service to optimize costs while the infrastructure is not in use.
+- Report download: provide as optional the download link to the file saved in the s3 bucket.
+- Enhanced Security: Implementation of advanced security features and best practices (cfn_nag).
+
 ## Contributions are welcome!
 
 Please fork this repository and submit pull requests with your improvements.
