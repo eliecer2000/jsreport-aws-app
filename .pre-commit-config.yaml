@@ -3,31 +3,6 @@
 default_install_hook_types: [pre-commit, post-commit, commit-msg]
 fail_fast: true
 repos:
-  # - repo: local
-  #   hooks:
-  #     - id: stage-commit
-  #       name: ---------------- Execution stage commit ----------------------
-  #       entry: echo
-  #       language: system
-  #       stages: [commit]
-  #       always_run: true
-  # - repo: local
-  #   hooks:
-  #     - id: stage-commit
-  #       name: ---------------- Execution stage commit-msg ------------------
-  #       entry: echo
-  #       language: system
-  #       stages: [commit-msg]
-  #       always_run: true
-  # - repo: local
-  #   hooks:
-  #     - id: stage-commit
-  #       name: ---------------- Execution stage post-commit ------------------
-  #       entry: echo
-  #       language: system
-  #       stages: [post-commit]
-  #       always_run: true
-
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
@@ -58,12 +33,11 @@ repos:
         stages: [commit]
         verbose: true
 
-  # - repo: https://github.com/eliecer2000/commitlint-pre-commit-hook
-  #   rev: 'v9.4.0'
-  #   hooks:
-  #     - id: commitlint
-  #       stages: [commit-msg]
-  #       always_run: true
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: 'v9.16.0'
+    hooks:
+      - id: commitlint
+        stages: [commit-msg]
 
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: 'v4.0.0-alpha.8' # Use the sha or tag you want to point at
@@ -94,6 +68,7 @@ repos:
       - id: seed-isort-config
         args: [--exclude=templates/]
         stages: [commit]
+
   - repo: https://github.com/pre-commit/mirrors-isort
     rev: v5.10.1 # Use the revision sha / tag you want to point at
     hooks:
@@ -107,14 +82,9 @@ repos:
     hooks:
       - id: cdk-synth
         stages: [commit]
+
   - repo: https://github.com/aws-cloudformation/cfn-lint
     rev: v0.86.2 # The version of cfn-lint to use
     hooks:
       - id: cfn-lint-rc
         stages: [commit]
-  # - repo: https://github.com/fabasoad/pre-commit-snyk
-  #   rev: v0.5.0
-  #   hooks:
-  #     - id: snyk-iac
-  #       args: ['cdk.out', '--severity-threshold=critical']
-  #       stages: [commit]

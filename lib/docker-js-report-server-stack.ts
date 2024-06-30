@@ -1,23 +1,23 @@
-import { StackProps, Stack, CfnOutput } from "aws-cdk-lib";
-import { Construct } from "constructs";
-import { DockerImageAsset } from "aws-cdk-lib/aws-ecr-assets";
-import * as iam from "aws-cdk-lib/aws-iam";
-import * as apprunner from "@aws-cdk/aws-apprunner-alpha";
-import { CfnAutoScalingConfiguration } from "aws-cdk-lib/aws-apprunner";
-import * as path from "path";
+import { StackProps, Stack, CfnOutput } from 'aws-cdk-lib'
+import { Construct } from 'constructs'
+import { DockerImageAsset } from 'aws-cdk-lib/aws-ecr-assets'
+import * as iam from 'aws-cdk-lib/aws-iam'
+import * as apprunner from '@aws-cdk/aws-apprunner-alpha'
+import { CfnAutoScalingConfiguration } from 'aws-cdk-lib/aws-apprunner'
+import * as path from 'path'
 
 export interface DockerJsReportServerStackProps extends StackProps {
-  bucketName: string;
+  bucketName: string
 }
 
 export class DockerJsReportServerStack extends Stack {
   constructor(
     scope: Construct,
     id: string,
-    props?: DockerJsReportServerStackProps,
+    props?: DockerJsReportServerStackProps
   ) {
-    super(scope, id, props);
-    const CURRENT_ENVIRONMENT = this.node.tryGetContext("env");
+    super(scope, id, props)
+    const CURRENT_ENVIRONMENT = this.node.tryGetContext('env')
 
     /*  TODO: To optimize costs, an auto scaling configuration
       will be created with the minimum requirements,
@@ -26,87 +26,88 @@ export class DockerJsReportServerStack extends Stack {
 
     new CfnAutoScalingConfiguration(
       this,
-      "JsReportServerAutoScalingConf",
+      'JsReportServerAutoScalingConf',
       /* all optional props */ {
-        autoScalingConfigurationName: "JsReportServerAutoScalingConf",
+        autoScalingConfigurationName: 'JsReportServerAutoScalingConf',
         maxConcurrency: 1,
         maxSize: 1,
-        minSize: 1,
-      },
-    );
+        minSize: 1
+      }
+    )
 
-    const asset = new DockerImageAsset(this, "DockerJsReportServerImage", {
+    const asset = new DockerImageAsset(this, 'DockerJsReportServerImage', {
       assetName: `js-report-server-image-${CURRENT_ENVIRONMENT}`,
-      directory: path.join(__dirname, "../", "functions", "ImageServer"),
+      directory: path.join(__dirname, '../', 'functions', 'ImageServer'),
       invalidation: {
-        buildArgs: false,
-      },
-    });
-    const IAMAppRunner = new iam.Role(this, "IAMAppRunner", {
+        buildArgs: false
+      }
+    })
+    const IAMAppRunner = new iam.Role(this, 'IAMAppRunner', {
       roleName: `DockerJsReportServerIAMAppRunner-${CURRENT_ENVIRONMENT}`,
-      assumedBy: new iam.ServicePrincipal("build.apprunner.amazonaws.com"),
-    });
+      assumedBy: new iam.ServicePrincipal('build.apprunner.amazonaws.com')
+    })
     IAMAppRunner.addToPolicy(
       new iam.PolicyStatement({
         effect: iam.Effect.ALLOW,
         actions: [
-          "ecr:GetDownloadUrlForLayer",
-          "ecr:BatchGetImage",
-          "ecr:DescribeImages",
-          "ecr:GetAuthorizationToken",
-          "ecr:BatchCheckLayerAvailability",
+          'ecr:GetDownloadUrlForLayer',
+          'ecr:BatchGetImage',
+          'ecr:DescribeImages',
+          'ecr:GetAuthorizationToken',
+          'ecr:BatchCheckLayerAvailability'
         ],
         resources: [
-          `arn:aws:apprunner:${this.region}:${this.account}:service/js-report-server-service-${CURRENT_ENVIRONMENT}/*`,
-        ],
-      }),
-    );
+          `arn:aws:apprunner:${this.region}:${this.account}:service/js-report-server-service-${CURRENT_ENVIRONMENT}/*`
+        ]
+      })
+    )
 
-    const IAMTaskAppRunner = new iam.Role(this, "IAMTaskAppRunner", {
+    const IAMTaskAppRunner = new iam.Role(this, 'IAMTaskAppRunner', {
       roleName: `DockerJsReportServerIAMTaskAppRunner-${CURRENT_ENVIRONMENT}`,
-      assumedBy: new iam.ServicePrincipal("tasks.apprunner.amazonaws.com"),
-    });
+      assumedBy: new iam.ServicePrincipal('tasks.apprunner.amazonaws.com')
+    })
     IAMTaskAppRunner.addToPolicy(
       new iam.PolicyStatement({
         effect: iam.Effect.ALLOW,
-        actions: ["s3:*"],
-        resources: [`arn:aws:s3:::${props?.bucketName}`],
-      }),
-    );
-
-    IAMTaskAppRunner.addToPolicy(
-      new iam.PolicyStatement({
-        effect: iam.Effect.ALLOW,
-        actions: ["sqs:*"],
+        actions: ['s3:*'],
         resources: [
-          `arn:aws:sqs:${this.region}:${this.account}:jsreport-lock.fifo`,
-        ],
-      }),
-    );
+          `arn:aws:s3:::${props?.bucketName}`,
+          `arn:aws:s3:::${props?.bucketName}/*`
+        ]
+      })
+    )
 
-    const service = new apprunner.Service(this, "DockerJsReportServerService", {
+    IAMTaskAppRunner.addToPolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        actions: ['sqs:*'],
+        resources: [`arn:aws:sqs:${this.region}:${this.account}:jsreport*`]
+      })
+    )
+
+    const service = new apprunner.Service(this, 'DockerJsReportServerService', {
       serviceName: `js-report-server-service-${CURRENT_ENVIRONMENT}`,
-      autoDeploymentsEnabled: true,
+      autoDeploymentsEnabled: false,
       source: apprunner.Source.fromAsset({
         imageConfiguration: {
           port: 5488,
           environmentVariables: {
-            extensions_awsS3Storage_bucket: props?.bucketName || "",
-            extensions_fsStoreAwsS3Persistence_bucket: props?.bucketName || "",
+            extensions_awsS3Storage_bucket: props?.bucketName || '',
+            extensions_fsStoreAwsS3Persistence_bucket: props?.bucketName || '',
             extensions_fsStoreAwsS3Persistence_prefix:
-              process.env.FS_STORE_AWS_S3_PERSISTENCE_PREFIX || "samples",
-          },
+              process.env.FS_STORE_AWS_S3_PERSISTENCE_PREFIX || 'samples'
+          }
         },
-        asset: asset,
+        asset: asset
       }),
       instanceRole: IAMTaskAppRunner,
-      accessRole: IAMAppRunner,
-    });
+      accessRole: IAMAppRunner
+    })
 
-    new CfnOutput(this, "app-runner-url", {
-      exportName: "app-runner-url",
-      value: "https://"+service.serviceUrl,
-      description: "URL to access service",
-    });
+    new CfnOutput(this, 'app-runner-url', {
+      exportName: 'app-runner-url',
+      value: 'https://' + service.serviceUrl,
+      description: 'URL to access service'
+    })
   }
 }
