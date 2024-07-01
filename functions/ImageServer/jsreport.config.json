@@ -22,9 +22,9 @@
       "filename": "logs/error.log"
     }
   },
-  "sandbox": { "allowedModules": ["https"] },
+  "sandbox": { "allowedModules": ["*"] },
   "trustUserCode": true,
-  "reportTimeout": 60000,
+  "reportTimeout": 300000,
   "workers": {
     "numberOfWorkers": 2
   },
@@ -46,7 +46,10 @@
       }
     },
     "authentication": {
-      "enabled": false
+      "cookieSession": {
+        "secret": "b04edfed39d24f919bb73969a358c20a"
+      },
+      "admin": {}
     },
     "sample-template": {
       "createSamples": true
