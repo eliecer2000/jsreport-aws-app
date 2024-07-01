@@ -95,7 +95,11 @@ export class DockerJsReportServerStack extends Stack {
             extensions_awsS3Storage_bucket: props?.bucketName || '',
             extensions_fsStoreAwsS3Persistence_bucket: props?.bucketName || '',
             extensions_fsStoreAwsS3Persistence_prefix:
-              process.env.FS_STORE_AWS_S3_PERSISTENCE_PREFIX || 'samples'
+              process.env.FS_STORE_AWS_S3_PERSISTENCE_PREFIX || 'samples',
+            extensions_authentication_admin_username:
+              process.env.FS_AUTHENTICATION_ADMIN_USERNAME || 'admin',
+            extensions_authentication_admin_password:
+              process.env.FS_AUTHENTICATION_ADMIN_PASSWORD || 'password'
           }
         },
         asset: asset

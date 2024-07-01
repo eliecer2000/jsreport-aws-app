@@ -49,7 +49,31 @@
       "cookieSession": {
         "secret": "b04edfed-39d2-4f91-9bb7-3969a358c20a"
       },
-      "admin": {}
+      "admin": {
+        "username": "admin",
+        "password": "password"
+      },
+      "authorizationServer": {
+        "name": "KeycloakServer",
+        "issuer": "http://localhost:8080/realms/jsreport",
+        "usernameField": "preferred_username",
+        "endpoints": {
+          "jwks": "http://localhost:8080/realms/jsreport/protocol/openid-connect/certs",
+          "authorization": "http://localhost:8080/realms/jsreport/protocol/openid-connect/auth",
+          "token": "http://localhost:8080/realms/jsreport/protocol/openid-connect/token",
+          "introspection": "http://localhost:8080/realms/jsreport/protocol/openid-connect/token/introspect",
+          "userinfo": "http://localhost:8080/realms/jsreport/protocol/openid-connect/userinfo"
+        },
+        "studioClient": {
+          "clientId": "jsreport-studio",
+          "clientSecret": "UGUO3hehey0W37ba3CqnuaqIFYHEYW1q"
+        },
+        "apiResource": {
+          "clientId": "jsreport-api",
+          "clientSecret": "f2b252fZIQkfpniGzSFxF9aUQwlPcCXV"
+        }
+      },
+      "enabled": true
     },
     "sample-template": {
       "createSamples": true
