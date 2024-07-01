@@ -97,9 +97,11 @@ export class DockerJsReportServerStack extends Stack {
             extensions_fsStoreAwsS3Persistence_prefix:
               process.env.FS_STORE_AWS_S3_PERSISTENCE_PREFIX || 'samples',
             extensions_authentication_admin_username:
-              process.env.FS_AUTHENTICATION_ADMIN_USERNAME || 'admin',
+              process.env.AUTHENTICATION_ADMIN_USERNAME || 'admin',
             extensions_authentication_admin_password:
-              process.env.FS_AUTHENTICATION_ADMIN_PASSWORD || 'password'
+              process.env.AUTHENTICATION_ADMIN_PASSWORD || 'password',
+            extensions_authentication_enabled:
+              process.env.AUTHENTICATION_ENABLED || 'false'
           }
         },
         asset: asset
